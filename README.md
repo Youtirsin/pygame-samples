@@ -1,2 +1,4 @@
-# Deno Demo
- A sample google deno demo with pygame
+# Pygame samples
+## some usual simple game samples, using pygame
++ Google Dinosaur
++ Flappy Bird
