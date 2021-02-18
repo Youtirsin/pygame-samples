@@ -1,0 +1,3 @@
+# 小球角度
+    right       left        bottom      top
+    
