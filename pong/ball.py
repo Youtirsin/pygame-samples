@@ -45,3 +45,6 @@ class Ball(pygame.sprite.Sprite):
             if target.collide_type == 'player':
                 self.move_val[0] = randint(1, 5)
                 self.move_val[1] = self.move_val[1] / abs(self.move_val[1]) * randint(1, 5)
+            if target.collide_type == 'bot':
+                self.move_val[0] = 0 - randint(1, 5)
+                self.move_val[1] = self.move_val[1] / abs(self.move_val[1]) * randint(1, 5)

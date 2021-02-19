@@ -1,6 +1,8 @@
 import pygame
 from pad import Pad
 
+#
+PLAYER_SPD = 3
 
 class Player(Pad):
     def __init__(self):
@@ -8,6 +10,7 @@ class Player(Pad):
         self.isDown = False
         self.isUp = False
         self.collide_type = "player"
+        self.spd = PLAYER_SPD
 
     def update(self):
         if self.isUp:

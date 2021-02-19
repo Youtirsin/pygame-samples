@@ -1,5 +1,6 @@
 import pygame
 from player import Player
+from bot import Bot
 from ball import Ball
 from border import Border
 
@@ -16,6 +17,8 @@ player.rect.center = (15, 160)
 ball = Ball()
 ball.rect.x = 0
 ball.rect.y = 0
+bot = Bot(ball)
+bot.rect.right = 600
 
 border_top = Border('top',WINSIZE[0])
 border_bottom = Border('bottom',WINSIZE[0])
@@ -30,12 +33,14 @@ border_right.rect.left = WINSIZE[0]
 border_grp = pygame.sprite.Group()
 ball_grp = pygame.sprite.Group()
 player_grp = pygame.sprite.Group()
+bot_grp = pygame.sprite.Group()
 
 border_grp.add(border_top)
 border_grp.add(border_bottom)
 border_grp.add(border_left)
 border_grp.add(border_right)
 player_grp.add(player)
+bot_grp.add(bot)
 ball_grp.add(ball)
 
 
@@ -45,6 +50,7 @@ FPSClock = pygame.time.Clock()
 def main():
     border_grp.draw(window)
     ball_grp.draw(window)
+    bot_grp.draw(window)
     pygame.display.flip()
     while 1:
         for event in pygame.event.get():
@@ -55,15 +61,18 @@ def main():
 
         ball.collide(border_grp)
         ball.collide(player_grp)
+        ball.collide(bot_grp)
 
         window.fill((0, 0, 0))
 
         ball_grp.update()
         player_grp.update()
+        bot_grp.update()
 
         border_grp.draw(window)
         ball_grp.draw(window)
         player_grp.draw(window)
+        bot_grp.draw(window)
 
         pygame.display.update()
         FPSClock.tick(FPS)
