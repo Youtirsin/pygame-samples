@@ -2,6 +2,7 @@ import pygame
 from pad import Pad
 
 
+# invincible bot :D
 class Bot(Pad):
     def __init__(self, ball):
         super(Bot, self).__init__()
