@@ -7,7 +7,7 @@ GRAVITY = 2
 
 class Ground(pygame.sprite.Sprite):
     def __init__(self, width):
-        pygame.sprite.Sprite.__init__(self)
+        super(Ground, self).__init__()
         self.image = pygame.Surface((width, 5))
         self.image.fill((0, 0, 0))
         self.rect = self.image.get_rect(y=GROUND_HEIGHT)

@@ -1,5 +1,5 @@
 import pygame
-
+from src.obstacle import Obstacle
 # player config
 PLAYER_COLOR = (0, 0, 0)
 INIT_POS = (50, 200)
@@ -9,13 +9,13 @@ JUMP_SPEED = 5
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, ground):
-        pygame.sprite.Sprite.__init__(self)
-        # super().__init__(self)
+        super(Player, self).__init__()
         self.image = pygame.Surface((60, 60))
         self.image.fill(PLAYER_COLOR)
         self.rect = self.image.get_rect(x = INIT_POS[0], y = INIT_POS[1])
 
         self.ground = ground
+        self.falling = False
         self.jumping = False
 
     def update(self):
@@ -33,3 +33,7 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         # jump
         self.jumping = True
+
+    def hit(self, grp):
+        target = pygame.sprite.spritecollideany(self, grp)
+        print(type(target) == Obstacle)
